@@ -2,7 +2,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  webpack(config) {
+  webpack(config: any) {
     // Configure SVG handling
     config.module.rules.push({
       test: /\.svg$/,
