@@ -1,5 +1,7 @@
+"use client";
 import CheckIcon from "../assets/check.svg";
 import { twMerge } from "tailwind-merge";
+import { motion } from "framer-motion";
 
 const pricingTiers = [
   {
@@ -93,9 +95,21 @@ export const Pricing = () => {
                   </h3>
                   {popular === true && (
                     <div className="inline-flex text-sm px-4 py-1.5 rounded-xl border border-white/20">
-                      <span className="bg-[linear-gradient(to_right,#DD7DDF,#E1CD86,#BBCB92,#71C2EF,#3BFFFF,#DD7DDF)] text-transparent bg-clip-text font-medium">
+                      <motion.span
+                        className="bg-[linear-gradient(to_right,#DD7DDF,#E1CD86,#BBCB92,#71C2EF,#3BFFFF,#DD7DDF,#DD7DDF,#E1CD86,#BBCB92,#71C2EF,#3BFFFF,#DD7DDF)]
+                      [background-size:200%] text-transparent bg-clip-text font-medium"
+                        animate={{
+                          backgroundPositionX: "100%",
+                        }}
+                        transition={{
+                          duration: 1,
+                          repeat: Infinity,
+                          ease: "linear",
+                          repeatType: "loop",
+                        }}
+                      >
                         Popular
-                      </span>
+                      </motion.span>
                     </div>
                   )}
                 </div>
@@ -104,7 +118,12 @@ export const Pricing = () => {
                   <span className="text-4xl font-bold tracking-tighter leading-none">
                     ${monthlyPrice}
                   </span>
-                  <span className={twMerge("tracking-tight font-bold text-black/50", inverse && "text-white/60")}>
+                  <span
+                    className={twMerge(
+                      "tracking-tight font-bold text-black/50",
+                      inverse && "text-white/60"
+                    )}
+                  >
                     /month
                   </span>
                   <button className="btn btn-primary w-full mt-[30px]">
